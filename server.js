@@ -8,7 +8,7 @@ var todos = [];
 var todoNextID = 1;
 
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
 	res.send('Todo API Root');
@@ -39,13 +39,12 @@ app.get('/todos/:id', function (req, res) {
 
 // POST /todos
 app.post('/todos', function (req, res) {
-	var body = req.body
+	var body = req.body;
 
-	body.id = todoNextID
-	todos.push(body.id)
-	todoNextID++;
+	body.id = todoNextID++;
+	todos.push(body.id);
 
-	res.json(body)
+	res.json(body);
 });
 
 
