@@ -29,21 +29,17 @@ app.get('/todos/:id', function (req, res) {
 	var todoID = req.params.id;
 
 	var matchedTodo;
-	for (var i = 0; i < todos.length; i++) {
-		todo = todos[i];
-		console.log(todo);
+	todos.forEach(function (todo) {
 		if (todo.id == todoID) {
 			matchedTodo = todo;
 		}
-	}
+	});
 
 	if (typeof matchedTodo == 'undefined') {
 		res.status(404).send();
 	} else {
-		res.send(res.json(matchedTodo));
+		res.json(matchedTodo);
 	}
-
-	
 });
 
 
