@@ -24,7 +24,7 @@ app.get('/todos', function (req, res) {
 app.get('/todos/:id', function (req, res) {
 	var todoID = parseInt(req.params.id, 10);
 
-	var matchedTodo = findWhere(todos,{id:todoID});
+	var matchedTodo = _.findWhere(todos,{id:todoID});
 
 	if (typeof matchedTodo == 'undefined') {
 		res.status(404).send();
