@@ -21,10 +21,31 @@ app.get('/', function (req, res) {
 
 // GET /todos
 app.get('/todos', function (req, res) {
-	res.json(todos)
-})
+	res.json(todos);
+});
 
 // GET /todos/:id
+app.get('/todos/:id', function (req, res) {
+	var todoID = req.params.id;
+
+	var matchedTodo;
+	for (var i = 0; i < todos.length; i++) {
+		todo = todos[i];
+		console.log(todo);
+		if (todo.id == todoID) {
+			matchedTodo = todo;
+		}
+	}
+
+	if (typeof matchedTodo == 'undefined') {
+		res.status(404).send();
+	} else {
+		res.send(res.json(matchedTodo));
+	}
+
+	
+});
+
 
 
 app.listen(PORT, function () {
